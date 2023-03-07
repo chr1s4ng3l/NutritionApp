@@ -17,8 +17,8 @@ data class ProductDomain(
 //    val imageFrontUrl: String,
 //    val imageIngredientsUrl: String,
 //    val ingredients: List<Ingredient>,
-//    val nutriScore: NutriscoreData,
-//    val novGroup: Int,
+    val nutriScoreGrade: String,
+    val novGroup: Int,
 //    val ecoScoreGrade: String
 
 
@@ -33,8 +33,8 @@ fun List<Product>?.toDomain(): List<ProductDomain> =
 //            imageFrontUrl = it.imageFrontUrl ?: "ImageFront not available",
 //            imageIngredientsUrl = it.imageIngredientsUrl ?: "Image not available",
 //            ingredients = it.ingredients ?: emptyList(),
-//            nutriScore = it.nutriscoreData ?: NutriscoreData(1.0),
-//            novGroup = it.novaGroup ?: 0,
+            nutriScoreGrade = it.nutriscoreGrade ?: "Nutriscore not available",
+            novGroup = it.novaGroup ?: 0,
 //            ecoScoreGrade = it.ecoscoreGrade ?: "?"
 
         )

@@ -540,8 +540,8 @@ data class Product(
 //    val noNutritionData: String? = "",
 //    @SerializedName("no_nutrition_data_imported")
 //    val noNutritionDataImported: String? = "",
-//    @SerializedName("nova_group")
-//    val novaGroup: Int? = 0,
+    @SerializedName("nova_group")
+    val novaGroup: Int? = 0,
 //    @SerializedName("nova_group_debug")
 //    val novaGroupDebug: String? = "",
 //    @SerializedName("nova_group_error")
@@ -564,8 +564,8 @@ data class Product(
 //    val nutriments: Nutriments? = Nutriments(),
 //    @SerializedName("nutriscore_data")
 //    val nutriscoreData: NutriscoreData? = NutriscoreData(),
-//    @SerializedName("nutriscore_grade")
-//    val nutriscoreGrade: String? = "",
+    @SerializedName("nutriscore_grade")
+    val nutriscoreGrade: String? = "",
 //    @SerializedName("nutriscore_grade_producer")
 //    val nutriscoreGradeProducer: String? = "",
 //    @SerializedName("nutriscore_grade_producer_imported")
