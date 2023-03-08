@@ -26,6 +26,7 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.nutritionapp.ui.theme.Grayt
 import com.example.nutritionapp.ui.theme.Teal200
 import com.example.nutritionapp.viewmodel.ProductViewModel
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
@@ -69,7 +70,7 @@ fun BottomBar(navHostController: NavHostController) {
     Row(
         Modifier
             .background(Color.White)
-            .fillMaxWidth(),
+            .fillMaxWidth().background(color = Grayt),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -118,7 +119,7 @@ fun RowScope.AddItem(
             modifier = Modifier
                 .padding(start = 50.dp, end = 50.dp, top = 8.dp, bottom = 8.dp),
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(4.dp)
+            horizontalArrangement = Arrangement.spacedBy(4.dp),
         ) {
 
             Icon(

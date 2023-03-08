@@ -47,7 +47,7 @@ fun TransparentClipView(
                     y = offsetInPx
                 ),
                 size = Size(widthInPx, heightInPx),
-                cornerRadius = CornerRadius(30f,30f),
+                cornerRadius = CornerRadius(35f,35f),
                 color = Color.Transparent,
                 blendMode = BlendMode.Clear
             )

@@ -16,7 +16,7 @@ import javax.inject.Inject
 private const val TAG = "ProductRepository"
 
 interface ProductRepository {
-    suspend fun getProducts(): Flow<UIState<List<ProductDomain>>>
+    suspend fun getProductByTag(tag: String): Flow<UIState<List<ProductDomain>>>
     suspend fun getProductByCode(code: String): Flow<UIState<List<ProductDomain>>>
 
 }
@@ -25,13 +25,13 @@ class ProductRepositoryImpl @Inject constructor(
     private val api: OpenFoodAPI,
     private val ioDispatcher: CoroutineDispatcher
 ) : ProductRepository {
-    override suspend fun getProducts(): Flow<UIState<List<ProductDomain>>> = flow {
+    override suspend fun getProductByTag(tag: String): Flow<UIState<List<ProductDomain>>> = flow {
 
         emit(UIState.LOADING)
 
         try {
 
-            val response = api.getAllProducts()
+            val response = api.getProductsByTag(tag)
             if (response.isSuccessful) {
                 response.body()?.let {
                     Log.d(TAG, "Response -> $response")

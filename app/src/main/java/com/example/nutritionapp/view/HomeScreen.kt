@@ -20,8 +20,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -33,7 +31,6 @@ import com.example.nftapp.utils.UIState
 import com.example.nutritionapp.R
 import com.example.nutritionapp.model.domain.ProductDomain
 import com.example.nutritionapp.viewmodel.ProductViewModel
-import javax.annotation.meta.When
 
 
 @Composable
@@ -56,7 +53,6 @@ fun ProductList(
     selectedProduct: ((ProductDomain) -> Unit)? = null
 
 ) {
-
     Column(
         Modifier
             .background(color = Color.White)
@@ -85,8 +81,8 @@ fun ProductItem(
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .height(280.dp)
-            .padding(horizontal = 7.dp, vertical = 7.dp),
+            .height(300.dp)
+            .padding(horizontal = 30.dp, vertical = 7.dp),
         elevation = 12.dp,
         backgroundColor = Color.White,
         shape = RoundedCornerShape(corner = CornerSize(16.dp)),
@@ -107,8 +103,8 @@ fun ProductItem(
                     .data(product.imageUrl)
                     .crossfade(true)
                     .build(),
-                placeholder = painterResource(R.drawable.ic_launcher_background),
-                error = painterResource(id = R.drawable.nopicture),
+                placeholder = painterResource(R.drawable.productnon),
+                error = painterResource(id = R.drawable.productnon),
                 contentDescription = stringResource(R.string.app_name),
                 contentScale = ContentScale.None,
                 alignment = Alignment.Center,
@@ -119,53 +115,39 @@ fun ProductItem(
 
             )
 
-            Text(
-                text = product.productName ?: "Product name not available",
-                fontWeight = FontWeight.Normal,
-                color = Color.Black,
-                fontSize = 16.sp,
-                textAlign = TextAlign.Start,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 10.dp)
-            )
+            Row(modifier = Modifier.fillMaxWidth()) {
+                Text(
+                    text = product.productName ?: "Product name not available",
+                    fontWeight = FontWeight.Normal,
+                    color = Color.Black,
+                    fontSize = 16.sp,
+                    textAlign = TextAlign.Start,
+                    modifier = Modifier
+                        .padding(top = 10.dp)
+                )
 
-            val nutriGrade = product.nutriScoreGrade
-            var imageRoute: Int? = null
-            val novaGroup = product.novGroup
-            var novaColor: Long? = null
+                Text(
+                    text = "-",
+                    fontWeight = FontWeight.Normal,
+                    color = Color.Black,
+                    fontSize = 16.sp,
+                    textAlign = TextAlign.Start,
+                    modifier = Modifier
+                        .padding(top = 10.dp)
 
-            when (nutriGrade) {
-                "a" -> {
-                    imageRoute = R.drawable.a
-                }
-                "b" -> {
-                    imageRoute = R.drawable.b
-                }
-                "c" -> {
-                    imageRoute = R.drawable.c
-                }
-                "d" -> {
-                    imageRoute = R.drawable.d
-                }
-                "e" -> {
-                    imageRoute = R.drawable.e
-                }
+                )
+
+                Text(
+                    text = product.productQuantity ?: "Quantity not available",
+                    fontWeight = FontWeight.Normal,
+                    color = Color.Black,
+                    fontSize = 16.sp,
+                    textAlign = TextAlign.Start,
+                    modifier = Modifier
+                        .padding(top = 10.dp)
+                )
             }
-            when (novaGroup) {
-                1 -> {
-                    novaColor = 0xFF3BAA3F
-                }
-                2 -> {
-                    novaColor = 0xFFFFC107
-                }
-                3 -> {
-                    novaColor = 0xFFFF5722
-                }
-                4 -> {
-                    novaColor = 0xFFEC2718
-                }
-            }
+
 
             //0xFF3BAA3F green 1
             //0xFFFFC107 yellow 2
@@ -178,42 +160,131 @@ fun ProductItem(
                     .padding(top = 20.dp, bottom = 10.dp)
             ) {
 
-                Image(
-                    painter = painterResource(id = imageRoute ?: R.drawable.nutriscoreunknown),
-                    contentDescription = "nutriscore"
-                )
+                NutriScore(product = product)
 
-                Column(modifier = Modifier.padding(start = 10.dp)) {
-                    Text(
-                        text = "NOVA",
-                        fontSize = 7.6.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = Color.Gray,
-                        textAlign = TextAlign.Center,
-                    )
-                    Box(
-                        modifier = Modifier
-                            .background(Color(color = novaColor ?: 0xFF6B6B6B))
-                            .height(30.dp)
-                            .width(20.dp)
-                    ) {
-                        Text(
-                            text = "$novaGroup",
-                            color = Color.White,
-                            fontWeight = FontWeight.Bold,
-                            modifier = Modifier
-                                .padding(
-                                    start = 5.dp,
-                                    end = 5.dp,
-                                )
-                            , fontSize = 17.sp
-                        )
-                    }
+                NovaScore(product = product)
 
-                }
+                EcoScore(product = product)
+
             }
 
         }
+    }
+
+}
+
+@Composable
+fun EcoScore(product: ProductDomain) {
+    val ecoScoreGrade = product.nutriScoreGrade
+    var imageRoute: Int? = null
+
+    when (ecoScoreGrade) {
+        "a" -> {
+            imageRoute = R.drawable.ecoa
+        }
+        "b" -> {
+            imageRoute = R.drawable.ecob
+        }
+        "c" -> {
+            imageRoute = R.drawable.ecoc
+        }
+        "d" -> {
+            imageRoute = R.drawable.ecod
+        }
+        "e" -> {
+            imageRoute = R.drawable.ecoe
+        }
+        "unknown" -> {
+            imageRoute = R.drawable.econull
+        }
+        "not-applicable" -> {
+            imageRoute = R.drawable.econull
+        }
+    }
+
+    Image(
+        painter = painterResource(id = imageRoute ?: R.drawable.econull),
+        contentDescription = "ecoscore"
+    )
+
+}
+
+@Composable
+fun NutriScore(product: ProductDomain) {
+    val nutriGrade = product.nutriScoreGrade
+    var imageRoute: Int? = null
+
+    when (nutriGrade) {
+        "a" -> {
+            imageRoute = R.drawable.a
+        }
+        "b" -> {
+            imageRoute = R.drawable.b
+        }
+        "c" -> {
+            imageRoute = R.drawable.c
+        }
+        "d" -> {
+            imageRoute = R.drawable.d
+        }
+        "e" -> {
+            imageRoute = R.drawable.e
+        }
+    }
+
+    Image(
+        painter = painterResource(id = imageRoute ?: R.drawable.nutriscoreunknown),
+        contentDescription = "nutriscore"
+    )
+
+}
+
+@Composable
+fun NovaScore(product: ProductDomain) {
+    val novaGroup = product.novGroup
+    var novaColor: Long? = null
+
+    when (novaGroup) {
+        1 -> {
+            novaColor = 0xFF3BAA3F
+        }
+        2 -> {
+            novaColor = 0xFFFFC107
+        }
+        3 -> {
+            novaColor = 0xFFFF5722
+        }
+        4 -> {
+            novaColor = 0xFFEC2718
+        }
+    }
+
+    Column(modifier = Modifier.padding(start = 10.dp, top = 2.dp, end = 10.dp, bottom = 2.dp)) {
+        Text(
+            text = "NOVA",
+            fontSize = 7.9.sp,
+            fontWeight = FontWeight.Bold,
+            color = Color.Gray,
+            textAlign = TextAlign.Center,
+        )
+        Box(
+            modifier = Modifier
+                .background(Color(color = novaColor ?: 0xFF6B6B6B))
+                .height(35.dp)
+                .width(20.dp)
+        ) {
+            Text(
+                text = "$novaGroup",
+                color = Color.White,
+                fontWeight = FontWeight.ExtraBold,
+                modifier = Modifier
+                    .padding(
+                        start = 5.dp,
+                        end = 5.dp, top = 3.dp
+                    ), fontSize = 18.sp
+            )
+        }
+
     }
 
 }
@@ -224,24 +295,29 @@ fun DefaultPreview() {
     ProductList(
         products = listOf(
             ProductDomain(
-                productName = "Coca",
+                productName = "Coca cola",
                 imageUrl = "LALALA",
                 nutriScoreGrade = "a",
-                novGroup = 2
+                novGroup = 2,
+                productQuantity = "300ml"
             ),
 
             ProductDomain(
                 productName = "Coca",
                 imageUrl = "LALALA",
                 nutriScoreGrade = "b",
-                novGroup = 1
+                novGroup = 1,
+                productQuantity = "300ml"
+
             ),
 
             ProductDomain(
                 productName = "Coca",
                 imageUrl = "LALALA",
                 nutriScoreGrade = "c",
-                novGroup = 2
+                novGroup = 2,
+                productQuantity = "300ml"
+
 
             ),
 
@@ -249,21 +325,27 @@ fun DefaultPreview() {
                 productName = "Coca",
                 imageUrl = "LALALA",
                 nutriScoreGrade = "d",
-                novGroup = 3
+                novGroup = 3,
+                productQuantity = "300ml"
+
             ),
 
             ProductDomain(
                 productName = "Coca",
                 imageUrl = "LALALA",
                 nutriScoreGrade = "e",
-                novGroup = 4
+                novGroup = 4,
+                productQuantity = "300ml"
+
             ),
 
             ProductDomain(
                 productName = "Coca",
                 imageUrl = "LALALA",
-                nutriScoreGrade = "",
-                novGroup = 0
+                nutriScoreGrade = "unknown",
+                novGroup = 0,
+                productQuantity = "300ml"
+
             )
 
         )

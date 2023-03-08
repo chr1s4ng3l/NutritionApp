@@ -30,10 +30,22 @@ class ProductViewModel @Inject constructor(private val repo: ProductRepositoryIm
         getProductByCode()
     }
 
-     fun getProductByCode(code: String? = null) {
+    fun getProductByCode(code: String? = null) {
         code?.let {
             viewModelScope.launch {
                 repo.getProductByCode(code).collect() {
+                    _product.value = it
+                    Log.d(TAG, "getProduct: $it")
+
+                }
+            }
+        }
+    }
+
+    fun getProductByTag(tag: String? = null) {
+        tag?.let {
+            viewModelScope.launch {
+                repo.getProductByTag(tag).collect() {
                     _product.value = it
                     Log.d(TAG, "getProduct: $it")
 

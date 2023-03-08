@@ -8,27 +8,25 @@ import retrofit2.http.Query
 
 interface OpenFoodAPI {
 
-    @GET(PRODUCTS_PATH)
-    suspend fun getAllProducts(
-        @Query("json") Json: Boolean? = true
+    @GET(SEARCH_PATH)
+    suspend fun getProductsByTag(
+        @Query("search_terms") search_terms: String?
     ): Response<ProductResponse>
 
 
-    @GET(API_PATH)
+    @GET(BARCODE_PATH)
     suspend fun getProductByCode(
-//        @Path("v2") v2: String = "v2",
-//        @Path("search") search: String? = "search",
         @Query("code") code: String?
     ): Response<ProductResponse>
 
-
-    //https://us-en.openfoodfacts.org/api/2/product/858176002157
-    //https://world.openfoodfacts.org/api/v2/search?code=858176002157
+    //Search -> https://world.openfoodfacts.org/cgi/search.pl?search_terms=ice+cream
+    //Products -> https://us-en.openfoodfacts.org/api/2/product/858176002157
+    //BarCode -> https://world.openfoodfacts.org/api/v2/search?code=858176002157
 
 
     companion object {
         const val BASE_PATH = "https://world.openfoodfacts.org/"
-        private const val PRODUCTS_PATH = "products"
-        private const val API_PATH = "api/v2/search"
+        private const val SEARCH_PATH = "cgi/search.pl"
+        private const val BARCODE_PATH = "api/v2/search"
     }
 }

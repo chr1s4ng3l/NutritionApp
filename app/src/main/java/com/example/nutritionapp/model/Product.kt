@@ -802,8 +802,8 @@ data class Product(
 //    val purchasePlaces: String? = "",
 //    @SerializedName("purchase_places_tags")
 //    val purchasePlacesTags: List<String>? = listOf(),
-//    @SerializedName("quantity")
-//    val quantity: String? = "",
+    @SerializedName("quantity")
+    val quantity: String? = "",
 //    @SerializedName("quantity_imported")
 //    val quantityImported: String? = "",
 //    @SerializedName("recycling_instructions_to_discard_fr")
