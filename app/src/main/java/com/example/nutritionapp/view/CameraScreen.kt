@@ -22,6 +22,7 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -113,7 +114,7 @@ fun CameraPreview(
                     modifier = Modifier.fillMaxSize(),
                     width = 350.dp,
                     height = 190.dp,
-                    offsetY = 100.dp
+                    offsetY = 60.dp
                 )
 
                 val isLandScape: Float
@@ -141,7 +142,7 @@ fun CameraPreview(
                     elevation = 20.dp,
                     backgroundColor = CardBlack,
 
-                ) {
+                    ) {
 
                     Column(
                         modifier = Modifier.fillMaxSize(),
@@ -149,17 +150,17 @@ fun CameraPreview(
                     ) {
 
                         Image(
-                            painter = painterResource(id = R.drawable.ic_launcher_foreground),
+                            painter = painterResource(id = R.drawable.panda),
                             contentDescription = "", modifier = Modifier
-                                .size(100.dp)
+                                .size(90.dp)
                                 .padding(top = 10.dp)
                         )
 
                         Text(
                             fontWeight = FontWeight.ExtraBold,
-                            text = "Welcome to NutriApp",
+                            text = stringResource(R.string.title),
                             fontSize = 30.sp,
-                            textAlign = TextAlign.Center
+                            textAlign = TextAlign.Center, color = Color.White
                         )
 
                         Button(

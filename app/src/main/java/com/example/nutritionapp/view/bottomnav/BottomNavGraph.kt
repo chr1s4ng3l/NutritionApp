@@ -1,9 +1,6 @@
 package com.example.nutritionapp.view.bottomnav
 
-import android.app.Activity
-import android.content.pm.ActivityInfo
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -38,7 +35,12 @@ fun BottomNavGraph(productViewModel: ProductViewModel, navHostController: NavHos
 
 
         composable("search") {
-            SearchScreen("", {})
+            SearchScreen("") {
+              //  productViewModel.getProductByTag(it)
+
+            }
+           // ProductScreen(productViewModel = productViewModel, navHostController)
+
 
         }
 
