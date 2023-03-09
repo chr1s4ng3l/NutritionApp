@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -23,6 +24,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.nutritionapp.R
@@ -30,7 +32,10 @@ import com.example.nutritionapp.ui.theme.*
 import com.example.nutritionapp.viewmodel.ProductViewModel
 
 @Composable
-fun ProductDetailScreen(productViewModel: ProductViewModel? = null) {
+fun ProductDetailScreen(
+    productViewModel: ProductViewModel? = null,
+    navController: NavController? = null
+) {
     val product = productViewModel?.selectedProduct
 
     Column(
@@ -72,11 +77,12 @@ fun ProductDetailScreen(productViewModel: ProductViewModel? = null) {
 
                 Row(
                     modifier = Modifier
-                        .fillMaxWidth().padding(bottom = 10.dp)
+                        .fillMaxWidth()
+                        .padding(bottom = 10.dp)
                 ) {
                     Text(
                         color = Color.Black,
-                        text =  product?.productName ?: "Product name not available",
+                        text = product?.productName ?: "Product name not available",
                         fontWeight = FontWeight.Bold,
                         textAlign = TextAlign.Start,
                         modifier = Modifier.weight(1f)
@@ -92,13 +98,13 @@ fun ProductDetailScreen(productViewModel: ProductViewModel? = null) {
 
 
                 //ABCDE
-                NutriscoreDetails()
+                NutriscoreDetails(productViewModel, navController)
 
                 //ABCDE
-                EcoScoreDetails()
+                EcoScoreDetails(productViewModel, navController)
 
                 //1234
-                NovascoreDetails()
+                NovascoreDetails(productViewModel, navController)
 
             }
 
@@ -109,16 +115,23 @@ fun ProductDetailScreen(productViewModel: ProductViewModel? = null) {
 
 }
 
+
+
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun NutriscoreDetails() {
+fun NutriscoreDetails(productViewModel: ProductViewModel?, navController: NavController?) {
     Surface(
         modifier = Modifier
             .padding(bottom = 10.dp)
             .fillMaxWidth()
             .clip(RoundedCornerShape(12.dp)),
         shape = RectangleShape,
+        onClick = {
+            productViewModel?.flgScore = "nutriscore"
+            navController?.navigate("scoreDetails")
+        }
 
-        ) {
+    ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -144,14 +157,19 @@ fun NutriscoreDetails() {
     }
 }
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun EcoScoreDetails() {
+fun EcoScoreDetails(productViewModel: ProductViewModel?, navController: NavController?) {
     Surface(
         modifier = Modifier
             .padding(bottom = 10.dp)
             .fillMaxWidth()
             .clip(RoundedCornerShape(12.dp)),
         shape = RectangleShape,
+        onClick = {
+            productViewModel?.flgScore = "ecoescore"
+            navController?.navigate("scoreDetails")
+        }
 
         ) {
         Row(
@@ -180,12 +198,17 @@ fun EcoScoreDetails() {
     }
 }
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun NovascoreDetails() {
+fun NovascoreDetails(productViewModel: ProductViewModel?, navController: NavController?) {
     Surface(
         modifier = Modifier
             .clip(RoundedCornerShape(12.dp)),
         shape = RectangleShape,
+        onClick = {
+            productViewModel?.flgScore = "novaescore"
+            navController?.navigate("scoreDetails")
+        }
 
         ) {
         Row(

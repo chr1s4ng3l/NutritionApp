@@ -5,6 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.nutritionapp.view.*
+import com.example.nutritionapp.view.scoresdetails.DetailScreen
 import com.example.nutritionapp.viewmodel.ProductViewModel
 
 
@@ -44,7 +45,12 @@ fun BottomNavGraph(productViewModel: ProductViewModel, navHostController: NavHos
 
 
         composable("details") {
-            ProductDetailScreen(productViewModel = productViewModel)
+            ProductDetailScreen(productViewModel = productViewModel, navHostController)
+
+        }
+
+        composable("ScoreDetails") {
+            DetailScreen(productViewModel)
 
         }
 

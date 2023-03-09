@@ -59,7 +59,7 @@ fun SearchScreen(
                 .focusRequester(focusRequester),
             shape = RoundedCornerShape(16.dp),
             colors = TextFieldDefaults.outlinedTextFieldColors(
-                focusedBorderColor = CardBlack, unfocusedBorderColor = Color.Green
+                focusedBorderColor = CardBlack, unfocusedBorderColor = Color.Green, textColor = Color.Black
             ),
             placeholder = { Text(text = "Search") },
             keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),

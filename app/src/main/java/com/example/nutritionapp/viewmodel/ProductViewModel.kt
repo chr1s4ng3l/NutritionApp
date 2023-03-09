@@ -20,6 +20,7 @@ class ProductViewModel @Inject constructor(private val repo: ProductRepositoryIm
 
     var barcode: String = ""
     var tag: String = ""
+    var flgScore: String = ""
     var selectedProduct: ProductDomain? = null
 
     private val _product: MutableLiveData<UIState<List<ProductDomain>>> =

@@ -1,4 +1,31 @@
 <resources>
     <string name="app_name">PandaFoodFacts</string>
     <string name="title">Welcome to PandaFoodFacts</string>
+
+
+    <string name="NovaTitle">Nova groups for food processing</string>
+    <string name="NovaWhatIs">What is NOVA and how are UPF defined?</string>
+    <string name="NovaDefine">The NOVA score measures the level of processing of foods on a scale of 1 “minimally-processed” to 4 “ultra-processed.” Studies have shown that NOVA-4 foods contribute disproportionately to weight gain. For a healthy diet, it is generally recommended to minimize the amount of NOVA-4 foods.</string>
+    <string name="NovaElement">Group 1 - Unprocessed or minimally processed foods\nGroup 2 - Processed culinary ingredients\nGroup 3 - Processed foods\nGroup 4 - Ultra-processed food and drink products</string>
+    <string name="NovaSubtitle">A classification in 4 groups to highlight the degree of processing of foods</string>
+    <string name="NovaBody1">The NOVA classification assigns a group to food products based on how much processing they have been through:</string>
+
+
+
+
+
+
+    <string name="moreInfo">Learn more about the Nutri-Score -> https://nutriscore.blog/</string>
+    <string name="moreInfoNova">Learn more about the Nova-Score -> https://us.openfoodfacts.org/nova</string>
+    <string name="explication">
+Basically, the nutritional value for the Nutri-Score letter grade is determined by subtracting the total positive points from the total negative points. And the lower the score, the better the letter grade.</string>
+    <string name="tableNutriScore">What Does a Nutri-Score Calculation Look Like?</string>
+    <string name="tableLooks">Here’s how the scoring tables look like:</string>
+
+    <string name="nutribody2"> Apicbase does these calculations automatically based on the users recipes in the system and generates the label, giving food production companies an easy way to comply with consumer wishes.</string>
+    <string name="nutribody">Nutri-Score — which is an easy-to-understand, colour-coded graphic representation of the quality of nutrients in a product — is, nonetheless, rooted in complex peer-reviewed and science-based nutritional calculations.</string>
+    <string name="nutriInfoTile">As consumers increasingly demand to know the nutritional value of what they eat and drink, European food production companies and large-scale caterers move towards adopting the Nutri-Score labelling system.</string>
+
+
+    <string name="NutriScoreTitle">Nutri-Score – A Simple Science-Based Nutritional Value Labelling System for the Food Industry</string>
 </resources>
