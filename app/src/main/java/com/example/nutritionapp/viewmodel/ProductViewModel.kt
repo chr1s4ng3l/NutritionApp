@@ -19,15 +19,21 @@ class ProductViewModel @Inject constructor(private val repo: ProductRepositoryIm
 
 
     var barcode: String = ""
+    var tag: String = ""
     var selectedProduct: ProductDomain? = null
 
     private val _product: MutableLiveData<UIState<List<ProductDomain>>> =
         MutableLiveData(UIState.LOADING)
     val product: LiveData<UIState<List<ProductDomain>>> get() = _product
 
+    private val _productTag: MutableLiveData<UIState<List<ProductDomain>>> =
+        MutableLiveData(UIState.LOADING)
+    val productTag: LiveData<UIState<List<ProductDomain>>> get() = _productTag
+
 
     init {
         getProductByCode()
+        getProductByTag()
     }
 
     fun getProductByCode(code: String? = null) {
@@ -46,7 +52,7 @@ class ProductViewModel @Inject constructor(private val repo: ProductRepositoryIm
         tag?.let {
             viewModelScope.launch {
                 repo.getProductByTag(tag).collect() {
-                    _product.value = it
+                    _productTag.value = it
                     Log.d(TAG, "getProduct: $it")
 
                 }

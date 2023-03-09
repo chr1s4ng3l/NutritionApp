@@ -10,7 +10,11 @@ interface OpenFoodAPI {
 
     @GET(SEARCH_PATH)
     suspend fun getProductsByTag(
-        @Query("search_terms") search_terms: String?
+        @Query("search_terms") search_terms: String?,
+        @Query("search_simple") search_simple: Int = 1,
+        @Query("action") action: String= "process",
+        @Query("json") json: Int = 1,
+        @Query("fields") fields: String = "product_name,brands,nova_group,nutriscore_grade,ecoscore_grade,image_url,quantity"
     ): Response<ProductResponse>
 
 
@@ -19,7 +23,12 @@ interface OpenFoodAPI {
         @Query("code") code: String?
     ): Response<ProductResponse>
 
-    //Search -> https://world.openfoodfacts.org/cgi/search.pl?search_terms=ice+cream
+    //Search -> https://world.openfoodfacts.org/cgi/search.pl?
+    // search_terms=coca+cola
+    // &search_simple=1
+    // &action=process
+    // &json=1
+    // &fields=product_name,brands,nova_group,nutriscore_grade,
     //Products -> https://us-en.openfoodfacts.org/api/2/product/858176002157
     //BarCode -> https://world.openfoodfacts.org/api/v2/search?code=858176002157
 

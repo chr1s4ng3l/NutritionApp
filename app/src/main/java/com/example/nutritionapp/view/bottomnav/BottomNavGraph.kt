@@ -21,26 +21,30 @@ fun BottomNavGraph(productViewModel: ProductViewModel, navHostController: NavHos
             ProfileScreen()
         }
 
+        composable("search") {
+            ShowProductsBySearch(productViewModel, navHostController)
+
+        }
+
         composable("products") {
-            productViewModel.getProductByCode(productViewModel.barcode)
-            ProductScreen(productViewModel = productViewModel, navHostController)
+
+            if (productViewModel.barcode == "") {
+                productViewModel.getProductByTag(productViewModel.tag)
+                ProductTagScreen(
+                    productViewModel = productViewModel,
+                    navController = navHostController
+                )
+            } else {
+                productViewModel.getProductByCode(productViewModel.barcode)
+                ProductScreen(productViewModel = productViewModel, navHostController)
+
+            }
 
         }
 
 
         composable("details") {
             ProductDetailScreen(productViewModel = productViewModel)
-
-        }
-
-
-        composable("search") {
-            SearchScreen("") {
-              //  productViewModel.getProductByTag(it)
-
-            }
-           // ProductScreen(productViewModel = productViewModel, navHostController)
-
 
         }
 

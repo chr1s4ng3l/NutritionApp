@@ -32,6 +32,7 @@ import com.example.nutritionapp.viewmodel.ProductViewModel
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.rememberPermissionState
 
+
 @OptIn(ExperimentalPermissionsApi::class)
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter", "PermissionLaunchedDuringComposition")
 @Composable
@@ -41,8 +42,6 @@ fun BottomNav() {
     val productViewModel: ProductViewModel = hiltViewModel()
     val cameraPermissionState =
         rememberPermissionState(permission = Manifest.permission.CAMERA)
-
-
 
 
     Scaffold(bottomBar = { BottomBar(navHostController = navController) }) {
@@ -69,8 +68,8 @@ fun BottomBar(navHostController: NavHostController) {
 
     Row(
         Modifier
-            .background(Color.White)
-            .fillMaxWidth().background(color = CardBlack),
+            .fillMaxWidth()
+            .background(color = CardBlack),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -97,7 +96,7 @@ fun RowScope.AddItem(
     val selected = currentDestination?.hierarchy?.any { it.route == screen.route } == true
 
     val background =
-        if (selected) Teal200.copy(0.6f) else Color.Transparent
+        if (selected) Teal200.copy(.9f) else Color.Transparent
 
     val contentColor =
         if (selected) Color.White else Color.Black

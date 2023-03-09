@@ -168,7 +168,7 @@ fun CameraPreview(
                                 navController?.navigate("search")
                             },
                             modifier = Modifier
-                                .padding(start = 20.dp, end = 20.dp, bottom = 5.dp, top = 30.dp)
+                                .padding(start = 20.dp, end = 20.dp, bottom = 10.dp, top = 30.dp)
                                 .fillMaxWidth()
                                 .alpha(.2f),
                             shape = RoundedCornerShape(16.dp),

@@ -33,6 +33,20 @@ import com.example.nutritionapp.model.domain.ProductDomain
 import com.example.nutritionapp.viewmodel.ProductViewModel
 
 
+
+@Composable
+fun ProductTagScreen(productViewModel: ProductViewModel, navController: NavController) {
+    when (val state = productViewModel.productTag.observeAsState(UIState.LOADING).value) {
+        is UIState.LOADING -> {}
+        is UIState.SUCCESS -> {
+            ProductList(state.response, navController) {
+                productViewModel.selectedProduct = it
+            }
+        }
+        is UIState.ERROR -> {}
+    }
+}
+
 @Composable
 fun ProductScreen(productViewModel: ProductViewModel, navController: NavController) {
     when (val state = productViewModel.product.observeAsState(UIState.LOADING).value) {
@@ -56,7 +70,7 @@ fun ProductList(
     Column(
         Modifier
             .background(color = Color.White)
-            .fillMaxSize()
+            .fillMaxSize().padding(bottom = 40.dp)
     ) {
         LazyVerticalGrid(columns = GridCells.Fixed(1), content = {
             itemsIndexed(items = products) { index, product ->

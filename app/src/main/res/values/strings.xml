@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">NutritionApp</string>
+    <string name="app_name">PandaFoodFacts</string>
     <string name="title">Welcome to PandaFoodFacts</string>
-    <string name="search">Search</string>
 </resources>
