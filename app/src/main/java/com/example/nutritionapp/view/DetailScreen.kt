@@ -310,7 +310,7 @@ fun NovascoreDetails(productViewModel: ProductViewModel?, navController: NavCont
     when (novaGrade) {
         1 -> {
             colorBox = Nova1
-            colorType = Color.Green
+            colorType = GreenLightA
             phrase = "Very low environmental impact"
 
         }

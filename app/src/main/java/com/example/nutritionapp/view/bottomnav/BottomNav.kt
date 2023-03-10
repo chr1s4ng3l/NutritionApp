@@ -40,8 +40,7 @@ fun BottomNav() {
 
     val navController = rememberNavController()
     val productViewModel: ProductViewModel = hiltViewModel()
-    val cameraPermissionState =
-        rememberPermissionState(permission = Manifest.permission.CAMERA)
+    val cameraPermissionState = rememberPermissionState(permission = Manifest.permission.CAMERA)
 
 
     Scaffold(bottomBar = { BottomBar(navHostController = navController) }) {
