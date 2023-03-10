@@ -17,7 +17,7 @@ data class ProductDomain(
     val nutriScoreGrade: String,
     val novGroup: Int,
     val productQuantity: String,
-//    val ecoScoreGrade: String
+    val ecoScoreGrade: String
 
 
 )
@@ -33,8 +33,8 @@ fun List<Product>?.toDomain(): List<ProductDomain> =
 //            ingredients = it.ingredients ?: emptyList(),
             nutriScoreGrade = it.nutriscoreGrade ?: "Nutriscore not available",
             novGroup = it.novaGroup ?: 0,
-            productQuantity = it.quantity ?: "Quantity not available"
-//            ecoScoreGrade = it.ecoscoreGrade ?: "?"
+            productQuantity = it.quantity ?: "Quantity not available",
+            ecoScoreGrade = it.ecoscoreGrade ?: "?"
 
         )
 

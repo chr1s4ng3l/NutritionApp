@@ -160,8 +160,8 @@ data class Product(
 //    val ecoscoreExtendedData: EcoscoreExtendedData? = EcoscoreExtendedData(),
 //    @SerializedName("ecoscore_extended_data_version")
 //    val ecoscoreExtendedDataVersion: String? = "",
-//    @SerializedName("ecoscore_grade")
-//    val ecoscoreGrade: String? = "",
+    @SerializedName("ecoscore_grade")
+    val ecoscoreGrade: String? = "",
 //    @SerializedName("ecoscore_score")
 //    val ecoscoreScore: Int? = 0,
 //    @SerializedName("ecoscore_tags")

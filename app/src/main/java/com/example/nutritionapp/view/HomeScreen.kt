@@ -189,7 +189,7 @@ fun ProductItem(
 
 @Composable
 fun EcoScore(product: ProductDomain) {
-    val ecoScoreGrade = product.nutriScoreGrade
+    val ecoScoreGrade = product.ecoScoreGrade
     var imageRoute: Int? = null
 
     when (ecoScoreGrade) {
@@ -313,7 +313,8 @@ fun DefaultPreview() {
                 imageUrl = "LALALA",
                 nutriScoreGrade = "a",
                 novGroup = 2,
-                productQuantity = "300ml"
+                productQuantity = "300ml",
+                ecoScoreGrade = "a"
             ),
 
             ProductDomain(
@@ -321,7 +322,8 @@ fun DefaultPreview() {
                 imageUrl = "LALALA",
                 nutriScoreGrade = "b",
                 novGroup = 1,
-                productQuantity = "300ml"
+                productQuantity = "300ml",
+                ecoScoreGrade = "a"
 
             ),
 
@@ -330,7 +332,8 @@ fun DefaultPreview() {
                 imageUrl = "LALALA",
                 nutriScoreGrade = "c",
                 novGroup = 2,
-                productQuantity = "300ml"
+                productQuantity = "300ml",
+                ecoScoreGrade = "a"
 
 
             ),
@@ -340,7 +343,8 @@ fun DefaultPreview() {
                 imageUrl = "LALALA",
                 nutriScoreGrade = "d",
                 novGroup = 3,
-                productQuantity = "300ml"
+                productQuantity = "300ml",
+                ecoScoreGrade = "a"
 
             ),
 
@@ -349,7 +353,9 @@ fun DefaultPreview() {
                 imageUrl = "LALALA",
                 nutriScoreGrade = "e",
                 novGroup = 4,
-                productQuantity = "300ml"
+                productQuantity = "300ml",
+                ecoScoreGrade = "a"
+
 
             ),
 
@@ -358,7 +364,8 @@ fun DefaultPreview() {
                 imageUrl = "LALALA",
                 nutriScoreGrade = "unknown",
                 novGroup = 0,
-                productQuantity = "300ml"
+                productQuantity = "300ml",
+                ecoScoreGrade = "a"
 
             )
 

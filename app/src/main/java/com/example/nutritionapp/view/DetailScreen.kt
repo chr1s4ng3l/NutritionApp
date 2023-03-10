@@ -33,8 +33,7 @@ import com.example.nutritionapp.viewmodel.ProductViewModel
 
 @Composable
 fun ProductDetailScreen(
-    productViewModel: ProductViewModel? = null,
-    navController: NavController? = null
+    productViewModel: ProductViewModel? = null, navController: NavController? = null
 ) {
     val product = productViewModel?.selectedProduct
 
@@ -45,10 +44,8 @@ fun ProductDetailScreen(
     ) {
 
         AsyncImage(
-            model = ImageRequest.Builder(LocalContext.current)
-                .data(product?.imageUrl)
-                .crossfade(true)
-                .build(),
+            model = ImageRequest.Builder(LocalContext.current).data(product?.imageUrl)
+                .crossfade(true).build(),
             placeholder = painterResource(R.drawable.ic_launcher_background),
             error = painterResource(id = R.drawable.productnon),
             contentDescription = stringResource(R.string.app_name),
@@ -115,16 +112,62 @@ fun ProductDetailScreen(
 
 }
 
+/*
 
+Nutri Score
+A.-Very good nutritional quality
+B.- Good nutritional quality
+C.-Average nutritional quality
+D.-Poor nutritional quality
+E.-Bad nutritional quality
+Null.- Missing data score
+
+ */
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun NutriscoreDetails(productViewModel: ProductViewModel?, navController: NavController?) {
-    Surface(
-        modifier = Modifier
-            .padding(bottom = 10.dp)
-            .fillMaxWidth()
-            .clip(RoundedCornerShape(12.dp)),
+
+    val nutriGrade = productViewModel?.selectedProduct?.nutriScoreGrade
+    var imageRoute: Int? = null
+    var phrase: String? = null
+    var colorType: Color? = null
+
+    when (nutriGrade) {
+        "a" -> {
+            imageRoute = R.drawable.a
+            colorType = GreenLightA
+            phrase = "Very good nutritional quality"
+
+        }
+        "b" -> {
+            imageRoute = R.drawable.b
+            colorType = GreenLightB
+            phrase = "Good nutritional quality"
+        }
+        "c" -> {
+            imageRoute = R.drawable.c
+            colorType = YellowLight
+            phrase = "Average nutritional quality"
+        }
+        "d" -> {
+            imageRoute = R.drawable.d
+            colorType = OrangeLight
+            phrase = "Poor nutritional quality"
+
+        }
+        "e" -> {
+            imageRoute = R.drawable.e
+            colorType = RedLight
+            phrase = "Bad nutritional quality"
+
+        }
+    }
+
+    Surface(modifier = Modifier
+        .padding(bottom = 10.dp)
+        .fillMaxWidth()
+        .clip(RoundedCornerShape(12.dp)),
         shape = RectangleShape,
         onClick = {
             productViewModel?.flgScore = "nutriscore"
@@ -135,11 +178,11 @@ fun NutriscoreDetails(productViewModel: ProductViewModel?, navController: NavCon
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(color = GreenLight),
+                .background(color = colorType ?: GrayLight),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Image(
-                painter = painterResource(R.drawable.b),
+                painter = painterResource(imageRoute ?: R.drawable.nutriscoreunknown),
                 contentDescription = "nutriscore",
                 modifier = Modifier
                     .padding(5.dp)
@@ -148,38 +191,85 @@ fun NutriscoreDetails(productViewModel: ProductViewModel?, navController: NavCon
             Text(
                 color = Green,
                 fontSize = 18.sp,
-                text = "Good nutritional quality",
+                text = phrase ?: "Missing data score",
                 fontWeight = FontWeight.ExtraBold,
-                modifier = Modifier
-                    .weight(2f)
+                modifier = Modifier.weight(2f)
             )
         }
     }
 }
 
+
+/*
+Eco Score
+
+A.- Very low environmental impact
+B.-Low environmental impact
+C.-Moderate environmental impact
+D.-High environmental impact
+E.-Very high environmental impact
+Null.- Missing data score
+
+ */
+
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun EcoScoreDetails(productViewModel: ProductViewModel?, navController: NavController?) {
-    Surface(
-        modifier = Modifier
-            .padding(bottom = 10.dp)
-            .fillMaxWidth()
-            .clip(RoundedCornerShape(12.dp)),
+
+    val ecoGrade = productViewModel?.selectedProduct?.ecoScoreGrade
+    var imageRoute: Int? = null
+    var phrase: String? = null
+    var colorType: Color? = null
+
+    when (ecoGrade) {
+        "a" -> {
+            imageRoute = R.drawable.ecoa
+            colorType = GreenLightA
+            phrase = "Very low environmental impact"
+
+        }
+        "b" -> {
+            imageRoute = R.drawable.ecob
+            colorType = GreenLightB
+            phrase = "Low environmental impact"
+        }
+        "c" -> {
+            imageRoute = R.drawable.ecoc
+            colorType = YellowLight
+            phrase = "Moderate environmental impact"
+        }
+        "d" -> {
+            imageRoute = R.drawable.ecod
+            colorType = OrangeLight
+            phrase = "High environmental impact"
+
+        }
+        "e" -> {
+            imageRoute = R.drawable.ecoe
+            colorType = RedLight
+            phrase = "Very high environmental impact"
+
+        }
+    }
+    Surface(modifier = Modifier
+        .padding(bottom = 10.dp)
+        .fillMaxWidth()
+        .clip(RoundedCornerShape(12.dp)),
         shape = RectangleShape,
         onClick = {
             productViewModel?.flgScore = "ecoescore"
             navController?.navigate("scoreDetails")
         }
 
-        ) {
+    ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(color = GrayLight),
+                .background(color = colorType ?: GrayLight),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Image(
-                painter = painterResource(R.drawable.econull),
+                painter = painterResource(imageRoute ?: R.drawable.econull),
                 contentDescription = "nutriscore",
                 modifier = Modifier
                     .padding(5.dp)
@@ -189,55 +279,78 @@ fun EcoScoreDetails(productViewModel: ProductViewModel?, navController: NavContr
             Text(
                 color = Color.Black,
                 fontSize = 18.sp,
-                text = "Not yet applicable for the category",
+                text = phrase ?: "Not yet applicable for the category",
                 fontWeight = FontWeight.ExtraBold,
-                modifier = Modifier
-                    .weight(2f)
+                modifier = Modifier.weight(2f)
             )
         }
     }
 }
 
+/*
+Nova Score
+
+1.-Unprocessed or minimally processed foods
+2.-Processed culinary ingredients
+3.-Processed foods
+4.-Ultra processed foods
+Null.-Missing data score
+
+ */
+
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun NovascoreDetails(productViewModel: ProductViewModel?, navController: NavController?) {
-    Surface(
-        modifier = Modifier
-            .clip(RoundedCornerShape(12.dp)),
-        shape = RectangleShape,
-        onClick = {
-            productViewModel?.flgScore = "novaescore"
-            navController?.navigate("scoreDetails")
+
+    val novaGrade = productViewModel?.selectedProduct?.novGroup
+    var phrase: String? = null
+    var colorType: Color? = null
+    var colorBox: Color? = null
+
+    when (novaGrade) {
+        1 -> {
+            colorBox = Nova1
+            colorType = Color.Green
+            phrase = "Very low environmental impact"
+
+        }
+        2 -> {
+            colorBox = Nova2
+            colorType = GreenLightB
+            phrase = "Low environmental impact"
+        }
+        3 -> {
+            colorBox = Nova3
+            colorType = YellowLight
+            phrase = "Moderate environmental impact"
+        }
+        4 -> {
+            colorBox = Nova4
+            colorType = OrangeLight
+            phrase = "High environmental impact"
+
         }
 
-        ) {
+    }
+    Surface(modifier = Modifier.clip(RoundedCornerShape(12.dp)), shape = RectangleShape, onClick = {
+        productViewModel?.flgScore = "novaescore"
+        navController?.navigate("scoreDetails")
+    }
+
+    ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(color = RedLight),
+                .background(color = colorType ?: GrayLight),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Box(
-                modifier = Modifier
-                    .background(Color.Red)
-                    .height(30.dp)
-                    .width(20.dp)
-            ) {
-                Text(
-                    text = "4",
-                    color = Color.White,
-                    fontWeight = FontWeight.ExtraBold,
-                    modifier = Modifier
-                        .padding(
-                            start = 5.dp,
-                            end = 5.dp, top = 2.dp
-                        ), fontSize = 17.sp
-                )
-            }
+
+            NovaBox(colorBox, novaGrade.toString())
+
             Text(
                 color = Red,
                 fontSize = 18.sp,
-                text = "Ultra processed food",
+                text = phrase ?: "Missing nova score",
                 fontWeight = FontWeight.ExtraBold,
                 modifier = Modifier
                     .padding(start = 10.dp, end = 10.dp)
@@ -245,6 +358,27 @@ fun NovascoreDetails(productViewModel: ProductViewModel?, navController: NavCont
             )
         }
     }
+}
+
+@Composable
+fun NovaBox(colorType: Color? = null, novaGrade: String? = null) {
+    Box(
+        modifier = Modifier
+            .background(colorType ?: GrayLight)
+            .height(30.dp)
+            .width(20.dp)
+    ) {
+        Text(
+            text = novaGrade ?: "?",
+            color = Color.White,
+            fontWeight = FontWeight.ExtraBold,
+            modifier = Modifier.padding(
+                    start = 5.dp, end = 5.dp, top = 2.dp
+                ),
+            fontSize = 17.sp
+        )
+    }
+
 }
 
 
