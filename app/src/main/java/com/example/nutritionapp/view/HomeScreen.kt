@@ -95,7 +95,7 @@ fun ProductItem(
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .height(300.dp)
+            .height(310.dp)
             .padding(horizontal = 30.dp, vertical = 7.dp),
         elevation = 12.dp,
         backgroundColor = Color.White,
@@ -131,8 +131,8 @@ fun ProductItem(
 
             Row(modifier = Modifier.fillMaxWidth()) {
                 Text(
-                    text = product.productName ?: "Product name not available",
-                    fontWeight = FontWeight.Normal,
+                    text = "${product.productName} - ${product.productQuantity}",
+                    fontWeight = FontWeight.Bold,
                     color = Color.Black,
                     fontSize = 16.sp,
                     textAlign = TextAlign.Start,
@@ -140,26 +140,6 @@ fun ProductItem(
                         .padding(top = 10.dp)
                 )
 
-                Text(
-                    text = "-",
-                    fontWeight = FontWeight.Normal,
-                    color = Color.Black,
-                    fontSize = 16.sp,
-                    textAlign = TextAlign.Start,
-                    modifier = Modifier
-                        .padding(top = 10.dp)
-
-                )
-
-                Text(
-                    text = product.productQuantity ?: "Quantity not available",
-                    fontWeight = FontWeight.Normal,
-                    color = Color.Black,
-                    fontSize = 16.sp,
-                    textAlign = TextAlign.Start,
-                    modifier = Modifier
-                        .padding(top = 10.dp)
-                )
             }
 
 
@@ -284,7 +264,6 @@ fun NovaScore(product: ProductDomain) {
         Box(
             modifier = Modifier
                 .background(Color(color = novaColor ?: 0xFF6B6B6B))
-                .height(35.dp)
                 .width(20.dp)
         ) {
             Text(
@@ -294,7 +273,7 @@ fun NovaScore(product: ProductDomain) {
                 modifier = Modifier
                     .padding(
                         start = 5.dp,
-                        end = 5.dp, top = 3.dp
+                        end = 5.dp, top = 3.dp, bottom = 5.dp
                     ), fontSize = 18.sp
             )
         }

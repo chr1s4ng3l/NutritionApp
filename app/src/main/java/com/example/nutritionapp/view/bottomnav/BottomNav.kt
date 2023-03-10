@@ -68,7 +68,7 @@ fun BottomBar(navHostController: NavHostController) {
     Row(
         Modifier
             .fillMaxWidth()
-            .background(color = CardBlack),
+            .background(color = Color.White),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {

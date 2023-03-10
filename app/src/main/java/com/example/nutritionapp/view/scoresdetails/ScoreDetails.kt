@@ -156,7 +156,7 @@ fun NovaScoreDetails() {
             color = Color.Black
         )
 
-        MyImage(imageId = R.drawable.novascoregroup)
+       // MyImage(imageId = R.drawable.novascoregroup)
 
         Text(
             text = stringResource(R.string.NovaElement),
