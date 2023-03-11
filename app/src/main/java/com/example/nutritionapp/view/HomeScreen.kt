@@ -29,7 +29,7 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.nftapp.utils.UIState
 import com.example.nutritionapp.R
-import com.example.nutritionapp.model.domain.ProductDomain
+import com.example.nutritionapp.data.model.domain.ProductDomain
 import com.example.nutritionapp.viewmodel.ProductViewModel
 
 
@@ -297,7 +297,8 @@ fun DefaultPreview() {
                 ingredients = "",
                 novGroup = 2,
                 productQuantity = "300ml",
-                ecoScoreGrade = "a"
+                ecoScoreGrade = "a",
+                isClick = false
             ),
 
             ProductDomain(
@@ -310,8 +311,8 @@ fun DefaultPreview() {
                 ingredients = "",
                 novGroup = 1,
                 productQuantity = "300ml",
-                ecoScoreGrade = "a"
-
+                ecoScoreGrade = "a",
+                isClick = false
             ),
 
             ProductDomain(
@@ -324,8 +325,8 @@ fun DefaultPreview() {
                 ingredients = "",
                 novGroup = 2,
                 productQuantity = "300ml",
-                ecoScoreGrade = "a"
-
+                ecoScoreGrade = "a",
+                isClick = false
 
             ),
 
@@ -339,8 +340,8 @@ fun DefaultPreview() {
                 ingredients = "",
                 novGroup = 3,
                 productQuantity = "300ml",
-                ecoScoreGrade = "a"
-
+                ecoScoreGrade = "a",
+                isClick = false
             ),
 
             ProductDomain(
@@ -353,8 +354,8 @@ fun DefaultPreview() {
                 ingredients = "",
                 novGroup = 4,
                 productQuantity = "300ml",
-                ecoScoreGrade = "a"
-
+                ecoScoreGrade = "a",
+                isClick = false
 
             ),
 
@@ -368,8 +369,8 @@ fun DefaultPreview() {
                 ingredients = "",
                 novGroup = 0,
                 productQuantity = "300ml",
-                ecoScoreGrade = "a"
-
+                ecoScoreGrade = "a",
+                isClick = false
             )
 
         )

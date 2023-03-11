@@ -1,13 +1,11 @@
-package com.example.nutritionapp.model.domain
+package com.example.nutritionapp.data.model.domain
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.nutritionapp.model.Product
+import com.example.nutritionapp.data.model.Product
 
-@Entity(tableName = "products")
 data class ProductDomain(
 
-    @PrimaryKey
     val id: String,
     val productName: String,
     val categories: String,
@@ -17,7 +15,8 @@ data class ProductDomain(
     val nutriScoreGrade: String,
     val novGroup: Int,
     val productQuantity: String,
-    val ecoScoreGrade: String
+    val ecoScoreGrade: String,
+    val isClick: Boolean
 
 
 )
@@ -34,9 +33,12 @@ fun List<Product>?.toDomain(): List<ProductDomain> =
             nutriScoreGrade = it.nutriscoreGrade ?: "Nutriscore not available",
             novGroup = it.novaGroup ?: 0,
             productQuantity = it.quantity ?: "Quantity not available",
-            ecoScoreGrade = it.ecoscoreGrade ?: "?"
+            ecoScoreGrade = it.ecoscoreGrade ?: "?",
+            isClick = false
 
         )
 
 
     } ?: emptyList()
+
+

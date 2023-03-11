@@ -1,6 +1,6 @@
 package com.example.nutritionapp.rest
 
-import com.example.nutritionapp.model.ProductResponse
+import com.example.nutritionapp.data.model.ProductResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

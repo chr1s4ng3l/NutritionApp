@@ -4,8 +4,8 @@ import android.util.Log
 import com.example.nftapp.utils.FailureResponse
 import com.example.nftapp.utils.NullAssetsResponse
 import com.example.nftapp.utils.UIState
-import com.example.nutritionapp.model.domain.ProductDomain
-import com.example.nutritionapp.model.domain.toDomain
+import com.example.nutritionapp.data.model.domain.ProductDomain
+import com.example.nutritionapp.data.model.domain.toDomain
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

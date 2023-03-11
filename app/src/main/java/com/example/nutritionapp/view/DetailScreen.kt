@@ -38,6 +38,9 @@ fun ProductDetailScreen(
     productViewModel: ProductViewModel? = null, navController: NavController? = null
 ) {
     val product = productViewModel?.selectedProduct
+    println("Datos $product")
+
+    productViewModel?.insertProductHistory(product)
 
     Column(
         modifier = Modifier

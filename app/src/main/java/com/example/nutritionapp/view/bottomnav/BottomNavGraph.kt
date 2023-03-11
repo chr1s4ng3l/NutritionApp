@@ -19,7 +19,9 @@ fun BottomNavGraph(productViewModel: ProductViewModel, navHostController: NavHos
             CameraPreview(productViewModel, navHostController)
         }
         composable(route = BottomBarScreen.Profile.route) {
-            ProfileScreen()
+            productViewModel.getProductHistory()
+            ProductHistoryScreen(productViewModel = productViewModel, navHostController)
+
         }
 
         composable("search") {
