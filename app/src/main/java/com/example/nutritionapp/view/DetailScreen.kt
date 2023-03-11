@@ -3,8 +3,10 @@ package com.example.nutritionapp.view
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Card
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Surface
@@ -40,6 +42,7 @@ fun ProductDetailScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .verticalScroll(rememberScrollState())
             .background(Color.White)
     ) {
 
@@ -61,7 +64,7 @@ fun ProductDetailScreen(
         Card(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(280.dp)
+                .height(260.dp)
                 .padding(start = 10.dp, end = 10.dp, top = 5.dp, bottom = 5.dp),
             elevation = 20.dp,
             backgroundColor = Color.White,
@@ -104,6 +107,119 @@ fun ProductDetailScreen(
                 NovascoreDetails(productViewModel, navController)
 
             }
+
+        }
+
+        Card(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 10.dp, end = 10.dp, top = 5.dp, bottom = 50.dp),
+            elevation = 20.dp,
+            backgroundColor = Color.White,
+            shape = RoundedCornerShape(
+                corner = CornerSize(16.dp)
+            )
+        ) {
+
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(10.dp)
+            ) {
+                Text(
+                    color = Color.Gray,
+                    fontSize = 20.sp,
+                    text = "Information",
+                    fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.Start,
+                    modifier = Modifier.padding(bottom = 10.dp)
+                )
+
+
+                Text(
+                    color = Color.Black,
+                    fontSize = 15.sp,
+                    text = stringResource(R.string.countries),
+                    fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.Start
+                )
+
+                Text(
+                    color = Color.Black,
+                    fontSize = 12.sp,
+                    text = product?.countries ?: "Countries not available",
+                    fontWeight = FontWeight.Normal,
+                    textAlign = TextAlign.Start,
+                    modifier = Modifier.padding(bottom = 10.dp)
+
+                )
+                Text(
+                    color = Color.Black,
+                    fontSize = 15.sp,
+                    text = stringResource(R.string.catr),
+                    fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.Start
+
+                )
+
+                Text(
+                    color = Color.Black,
+                    fontSize = 12.sp,
+                    text = product?.categories ?: "Categories not available",
+                    fontWeight = FontWeight.Normal,
+                    textAlign = TextAlign.Start,
+                    modifier = Modifier.padding(bottom = 10.dp)
+
+                )
+
+                Text(
+                    color = Color.Black,
+                    fontSize = 15.sp,
+                    text = stringResource(R.string.Ingredients),
+                    fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.Start,
+
+                    )
+
+                Text(
+                    color = Color.Black,
+                    fontSize = 12.sp,
+                    text = product?.ingredients ?: "Ingredients not available",
+                    fontWeight = FontWeight.Normal,
+                    textAlign = TextAlign.Start,
+                    modifier = Modifier.padding(bottom = 10.dp)
+
+                )
+
+                Column(
+                    modifier = Modifier
+                        .padding(top = 40.dp, start = 10.dp, end = 10.dp)
+                        .fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+
+                    Image(
+                        painter = painterResource(id = R.drawable.barcode),
+                        contentDescription = "novaimage",
+                        modifier = Modifier
+                            .size(150.dp)
+                    )
+                    Text(
+                        color = Color.Black,
+                        fontSize = 15.sp,
+                        text = product?.id ?: "Barcode not available",
+                        fontWeight = FontWeight.ExtraBold,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier
+                            .fillMaxWidth().padding(bottom = 20.dp)
+
+
+                    )
+
+                }
+
+
+            }
+
 
         }
 
@@ -364,7 +480,7 @@ fun NovascoreDetails(productViewModel: ProductViewModel?, navController: NavCont
 fun NovaBox(colorType: Color? = null, novaGrade: String? = null) {
     Box(
         modifier = Modifier
-            .background(colorType ?: GrayLight)
+            .background(colorType ?: Color.DarkGray)
             .height(30.dp)
             .width(20.dp)
     ) {
@@ -373,8 +489,8 @@ fun NovaBox(colorType: Color? = null, novaGrade: String? = null) {
             color = Color.White,
             fontWeight = FontWeight.ExtraBold,
             modifier = Modifier.padding(
-                    start = 5.dp, end = 5.dp, top = 2.dp
-                ),
+                start = 5.dp, end = 5.dp, top = 2.dp
+            ),
             fontSize = 17.sp
         )
     }

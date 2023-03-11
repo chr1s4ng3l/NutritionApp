@@ -21,8 +21,8 @@ sealed class BottomBarScreen(
     )
 
     object Profile : BottomBarScreen(
-        route = "profile",
-        title = "Profile",
+        route = "history",
+        title = "History",
         icon = R.drawable.ic_bottom_profile,
         iconFocused = R.drawable.ic_bottom_profile_focused
     )

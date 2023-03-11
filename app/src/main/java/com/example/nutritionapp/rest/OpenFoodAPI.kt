@@ -3,7 +3,6 @@ package com.example.nutritionapp.rest
 import com.example.nutritionapp.model.ProductResponse
 import retrofit2.Response
 import retrofit2.http.GET
-import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface OpenFoodAPI {
@@ -14,7 +13,7 @@ interface OpenFoodAPI {
         @Query("search_simple") search_simple: Int = 1,
         @Query("action") action: String= "process",
         @Query("json") json: Int = 1,
-        @Query("fields") fields: String = "product_name,brands,nova_group,nutriscore_grade,ecoscore_grade,image_url,quantity"
+        @Query("fields") fields: String = "product_name,brands,nova_group,nutriscore_grade,ecoscore_grade,image_url,quantity,id,countries,categories,ingredients_text"
     ): Response<ProductResponse>
 
 

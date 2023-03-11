@@ -33,7 +33,6 @@ import com.example.nutritionapp.model.domain.ProductDomain
 import com.example.nutritionapp.viewmodel.ProductViewModel
 
 
-
 @Composable
 fun ProductTagScreen(productViewModel: ProductViewModel, navController: NavController) {
     when (val state = productViewModel.productTag.observeAsState(UIState.LOADING).value) {
@@ -70,7 +69,8 @@ fun ProductList(
     Column(
         Modifier
             .background(color = Color.White)
-            .fillMaxSize().padding(bottom = 40.dp)
+            .fillMaxSize()
+            .padding(bottom = 40.dp)
     ) {
         LazyVerticalGrid(columns = GridCells.Fixed(1), content = {
             itemsIndexed(items = products) { index, product ->
@@ -288,18 +288,26 @@ fun DefaultPreview() {
     ProductList(
         products = listOf(
             ProductDomain(
+                id = "",
                 productName = "Coca cola",
                 imageUrl = "LALALA",
                 nutriScoreGrade = "a",
+                categories = "",
+                countries = "",
+                ingredients = "",
                 novGroup = 2,
                 productQuantity = "300ml",
                 ecoScoreGrade = "a"
             ),
 
             ProductDomain(
+                id = "",
                 productName = "Coca",
                 imageUrl = "LALALA",
                 nutriScoreGrade = "b",
+                categories = "",
+                countries = "",
+                ingredients = "",
                 novGroup = 1,
                 productQuantity = "300ml",
                 ecoScoreGrade = "a"
@@ -307,9 +315,13 @@ fun DefaultPreview() {
             ),
 
             ProductDomain(
+                id = "",
                 productName = "Coca",
                 imageUrl = "LALALA",
                 nutriScoreGrade = "c",
+                categories = "",
+                countries = "",
+                ingredients = "",
                 novGroup = 2,
                 productQuantity = "300ml",
                 ecoScoreGrade = "a"
@@ -318,9 +330,13 @@ fun DefaultPreview() {
             ),
 
             ProductDomain(
+                id = "",
                 productName = "Coca",
                 imageUrl = "LALALA",
                 nutriScoreGrade = "d",
+                categories = "",
+                countries = "",
+                ingredients = "",
                 novGroup = 3,
                 productQuantity = "300ml",
                 ecoScoreGrade = "a"
@@ -328,9 +344,13 @@ fun DefaultPreview() {
             ),
 
             ProductDomain(
+                id = "",
                 productName = "Coca",
                 imageUrl = "LALALA",
                 nutriScoreGrade = "e",
+                categories = "",
+                countries = "",
+                ingredients = "",
                 novGroup = 4,
                 productQuantity = "300ml",
                 ecoScoreGrade = "a"
@@ -339,9 +359,13 @@ fun DefaultPreview() {
             ),
 
             ProductDomain(
+                id = "",
                 productName = "Coca",
                 imageUrl = "LALALA",
                 nutriScoreGrade = "unknown",
+                categories = "",
+                countries = "",
+                ingredients = "",
                 novGroup = 0,
                 productQuantity = "300ml",
                 ecoScoreGrade = "a"

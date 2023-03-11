@@ -60,8 +60,8 @@ data class Product(
 //    val carbonFootprintFromKnownIngredientsDebug: String? = "",
 //    @SerializedName("carbon_footprint_percent_of_known_ingredients")
 //    val carbonFootprintPercentOfKnownIngredients: Double? = 0.0,
-//    @SerializedName("categories")
-//    val categories: String? = "",
+    @SerializedName("categories")
+    val categories: String? = "",
 //    @SerializedName("categories_hierarchy")
 //    val categoriesHierarchy: List<String>? = listOf(),
 //    @SerializedName("categories_imported")
@@ -110,8 +110,8 @@ data class Product(
 //    val correctors: List<String>? = listOf(),
 //    @SerializedName("correctors_tags")
 //    val correctorsTags: List<String>? = listOf(),
-//    @SerializedName("countries")
-//    val countries: String? = "",
+    @SerializedName("countries")
+    val countries: String? = "",
 //    @SerializedName("countries_beforescanbot")
 //    val countriesBeforescanbot: String? = "",
 //    @SerializedName("countries_hierarchy")
@@ -248,8 +248,8 @@ data class Product(
 //    val genericNameZh: String? = "",
 //    @SerializedName("grades")
 //    val grades: Grades? = Grades(),
-//    @SerializedName("id")
-//    val id: String? = "",
+    @SerializedName("id")
+    val id: String? = "",
 //    @SerializedName("image_front_small_url")
 //    val imageFrontSmallUrl: String? = "",
 //    @SerializedName("image_front_thumb_url")
@@ -310,8 +310,8 @@ data class Product(
 //    val ingredientsPercentAnalysis: Int? = 0,
 //    @SerializedName("ingredients_tags")
 //    val ingredientsTags: List<String>? = listOf(),
-//    @SerializedName("ingredients_text")
-//    val ingredientsText: String? = "",
+    @SerializedName("ingredients_text")
+    val ingredientsText: String? = "",
 //    @SerializedName("ingredients_text_ar")
 //    val ingredientsTextAr: String? = "",
 //    @SerializedName("ingredients_text_bg")
@@ -559,7 +559,7 @@ data class Product(
 //    @SerializedName("nutrient_levels")
 //    val nutrientLevels: NutrientLevels? = NutrientLevels(),
 //    @SerializedName("nutrient_levels_tags")
-//    val nutrientLevelsTags: List<String>? = listOf(),
+//      val nutrientLevelsTags: List<String>? = listOf(),
 //    @SerializedName("nutriments")
 //    val nutriments: Nutriments? = Nutriments(),
 //    @SerializedName("nutriscore_data")

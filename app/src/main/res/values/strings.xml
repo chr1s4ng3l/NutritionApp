@@ -38,4 +38,8 @@
 
 
     <string name="NutriScoreTitle">Nutri-Score – A Simple Science-Based Nutritional Value Labelling System for the Food Industry</string>
+    <string name="countries">Countries</string>
+    <string name="catr">Categories</string>
+    <string name="Ingredients">Ingredients</string>
+    <string name="BARCODE">BARCODE</string>
 </resources>
