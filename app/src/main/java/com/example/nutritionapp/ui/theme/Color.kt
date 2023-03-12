@@ -23,6 +23,8 @@ val Nova1 = Color(0xFF3BAA3F)
 val Nova2 = Color(0xFFFFC107)
 val Nova3 = Color(0xFFFF5722)
 val Nova4 = Color(0xFFEC2718)
+val TikTok = Color(0xFFEE1D52)
+val TikTok2 = Color(0xFFFF0032)
 
 
 

@@ -8,7 +8,7 @@ interface LocalRepository {
 
     suspend fun insertProduct(productDomain: ProductDomain)
 
-    suspend fun deleteProduct(productDomain: ProductDomain)
+    suspend fun deleteProduct(productTable: ProductTable)
 
     suspend fun getProduct(): UIState<List<ProductTable>>
 }
@@ -29,10 +29,9 @@ class LocalRepositoryImpl @Inject constructor(private val productDao: ProductDao
         }
     }
 
-    override suspend fun deleteProduct(productDomain: ProductDomain) {
+    override suspend fun deleteProduct(productTable: ProductTable) {
         try {
 
-            val productTable = productDomain.toDomainTable()
             productDao.deleteProduct(productTable)
 
         } catch (e: Exception) {
