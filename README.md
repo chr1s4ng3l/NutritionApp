@@ -1,4 +1,4 @@
-#  **Panda Food Facts - Kotlin**
+#  **Panda Food Facts - Kotlin 🐼**
 
 ⚠️ WARNING: This is a development version and is not yet suitable for a production environment.
 
