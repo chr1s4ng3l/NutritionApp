@@ -3,9 +3,8 @@ package com.example.nutritionapp.view
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.itemsIndexed
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
@@ -38,7 +37,7 @@ fun ProductTagScreen(productViewModel: ProductViewModel, navController: NavContr
     when (val state = productViewModel.productTag.observeAsState(UIState.LOADING).value) {
         is UIState.LOADING -> {}
         is UIState.SUCCESS -> {
-            ProductList(state.response, navController) {
+            ProductList(productViewModel, state.response, navController) {
                 productViewModel.selectedProduct = it
             }
         }
@@ -51,7 +50,7 @@ fun ProductScreen(productViewModel: ProductViewModel, navController: NavControll
     when (val state = productViewModel.product.observeAsState(UIState.LOADING).value) {
         is UIState.LOADING -> {}
         is UIState.SUCCESS -> {
-            ProductList(state.response, navController) {
+            ProductList(productViewModel = productViewModel, state.response, navController) {
                 productViewModel.selectedProduct = it
             }
         }
@@ -61,24 +60,31 @@ fun ProductScreen(productViewModel: ProductViewModel, navController: NavControll
 
 @Composable
 fun ProductList(
+    productViewModel: ProductViewModel,
     products: List<ProductDomain>,
     navController: NavController? = null,
     selectedProduct: ((ProductDomain) -> Unit)? = null
 
 ) {
+
     Column(
         Modifier
             .background(color = Color.White)
             .fillMaxSize()
             .padding(bottom = 40.dp)
     ) {
-        LazyVerticalGrid(columns = GridCells.Fixed(1), content = {
-            itemsIndexed(items = products) { index, product ->
-                ProductItem(product = product, navController, selectedProduct)
+        LazyColumn(
+            state = rememberForeverLazyListState(
+                key = productViewModel.selectedProduct?.id ?: ""
+            ), content = {
+                itemsIndexed(items = products) { index, product ->
+                    ProductItem(product = product, navController, selectedProduct)
+                }
             }
-        })
-    }
 
+        )
+
+    }
 
 }
 
@@ -102,6 +108,7 @@ fun ProductItem(
         shape = RoundedCornerShape(corner = CornerSize(16.dp)),
         onClick = {
             selectedProduct?.invoke(product)
+
             navController?.navigate("details")
         }
     ) {
@@ -130,8 +137,7 @@ fun ProductItem(
             )
 
             Row(modifier = Modifier.fillMaxWidth()) {
-                var productName = ""
-                productName = product.productName.ifEmpty {
+                val productName = product.productName.ifEmpty {
                     "Unknown product"
 
                 }
@@ -290,95 +296,5 @@ fun NovaScore(product: ProductDomain) {
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun DefaultPreview() {
-    ProductList(
-        products = listOf(
-            ProductDomain(
-                id = "",
-                productName = "Coca cola",
-                imageUrl = "LALALA",
-                nutriScoreGrade = "a",
-                categories = "",
-                countries = "",
-                ingredients = "",
-                novGroup = 2,
-                productQuantity = "300ml",
-                ecoScoreGrade = "a",
-                isClick = false
-            ),
 
-            ProductDomain(
-                id = "",
-                productName = "Coca",
-                imageUrl = "LALALA",
-                nutriScoreGrade = "b",
-                categories = "",
-                countries = "",
-                ingredients = "",
-                novGroup = 1,
-                productQuantity = "300ml",
-                ecoScoreGrade = "a",
-                isClick = false
-            ),
-
-            ProductDomain(
-                id = "",
-                productName = "Coca",
-                imageUrl = "LALALA",
-                nutriScoreGrade = "c",
-                categories = "",
-                countries = "",
-                ingredients = "",
-                novGroup = 2,
-                productQuantity = "300ml",
-                ecoScoreGrade = "a",
-                isClick = false
-
-            ),
-
-            ProductDomain(
-                id = "",
-                productName = "Coca",
-                imageUrl = "LALALA",
-                nutriScoreGrade = "d",
-                categories = "",
-                countries = "",
-                ingredients = "",
-                novGroup = 3,
-                productQuantity = "300ml",
-                ecoScoreGrade = "a",
-                isClick = false
-            ),
-
-            ProductDomain(
-                id = "",
-                productName = "Coca",
-                imageUrl = "LALALA",
-                nutriScoreGrade = "e",
-                categories = "",
-                countries = "",
-                ingredients = "",
-                novGroup = 4,
-                productQuantity = "300ml",
-                ecoScoreGrade = "a",
-                isClick = false
-
-            ),
-
-            ProductDomain(
-                id = "",
-                productName = "Coca",
-                imageUrl = "LALALA",
-                nutriScoreGrade = "unknown",
-                categories = "",
-                countries = "",
-                ingredients = "",
-                novGroup = 0,
-                productQuantity = "300ml",
-                ecoScoreGrade = "a",
-                isClick = false
-            )
-
-        )
-
-    )
 }
