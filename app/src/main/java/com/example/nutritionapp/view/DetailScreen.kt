@@ -37,6 +37,7 @@ import com.example.nutritionapp.viewmodel.ProductViewModel
 fun ProductDetailScreen(
     productViewModel: ProductViewModel? = null, navController: NavController? = null
 ) {
+
     val product = productViewModel?.selectedProduct
     println("Datos $product")
 

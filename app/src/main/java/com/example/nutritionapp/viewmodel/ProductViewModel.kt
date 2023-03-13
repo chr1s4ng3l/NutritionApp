@@ -95,7 +95,9 @@ class ProductViewModel @Inject constructor(
     }
     fun deleteProductHistory(product: ProductTable) {
         viewModelScope.launch {
-           localRepository.deleteProduct(product)
+            localRepository.deleteProduct(product)
+            _productInHistory.value = localRepository.getProduct()
+
 
         }
     }

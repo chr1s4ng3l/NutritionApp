@@ -31,17 +31,17 @@ fun BottomNavGraph(productViewModel: ProductViewModel, navHostController: NavHos
 
         composable("products") {
 
-            if (productViewModel.barcode == "") {
-                productViewModel.getProductByTag(productViewModel.tag)
-                ProductTagScreen(
-                    productViewModel = productViewModel,
-                    navController = navHostController
-                )
-            } else {
-                productViewModel.getProductByCode(productViewModel.barcode)
-                ProductScreen(productViewModel = productViewModel, navHostController)
+                if (productViewModel.barcode == "") {
+                    productViewModel.getProductByTag(productViewModel.tag)
+                    ProductTagScreen(
+                        productViewModel = productViewModel,
+                        navController = navHostController
+                    )
+                } else {
+                    productViewModel.getProductByCode(productViewModel.barcode)
+                    ProductScreen(productViewModel = productViewModel, navHostController)
 
-            }
+                }
 
         }
 

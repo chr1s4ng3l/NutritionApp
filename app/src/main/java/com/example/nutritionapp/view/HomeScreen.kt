@@ -130,8 +130,14 @@ fun ProductItem(
             )
 
             Row(modifier = Modifier.fillMaxWidth()) {
+                var productName = ""
+                productName = product.productName.ifEmpty {
+                    "Unknown product"
+
+                }
+
                 Text(
-                    text = "${product.productName} - ${product.productQuantity}",
+                    text = "$productName ${product.productQuantity}",
                     fontWeight = FontWeight.Bold,
                     color = Color.Black,
                     fontSize = 16.sp,
@@ -141,7 +147,6 @@ fun ProductItem(
                 )
 
             }
-
 
             //0xFF3BAA3F green 1
             //0xFFFFC107 yellow 2

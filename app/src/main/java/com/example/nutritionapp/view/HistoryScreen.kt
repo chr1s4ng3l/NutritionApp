@@ -25,7 +25,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.*
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
@@ -73,7 +72,7 @@ fun ProductListHistory(
                     navController,
                     selectedProduct,
                     productViewModel
-                    )
+                )
             }
         })
     }
@@ -97,21 +96,22 @@ fun ProductItemHistory(
         background = TikTok2,
         isUndo = true,
         onSwipe = {
+
             productViewModel?.deleteProductHistory(product)
+
         },
     )
 
     SwipeableActionsBox(
-        endActions = listOf(delete)
+        endActions = listOf(delete),
+        swipeThreshold = 200.dp
     ) {
         // Swipeable content goes here.
-
 
         Card(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(310.dp)
-                .padding(horizontal = 30.dp, vertical = 7.dp),
+                .padding(horizontal = 10.dp, vertical = 7.dp),
             elevation = 12.dp,
             backgroundColor = Color.White,
             shape = RoundedCornerShape(corner = CornerSize(16.dp)),
@@ -121,39 +121,66 @@ fun ProductItemHistory(
             }
         ) {
 
+
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(10.dp)
+                    .padding(5.dp)
             ) {
 
-                AsyncImage(
-                    model = ImageRequest.Builder(LocalContext.current)
-                        .data(product.imageUrl)
-                        .crossfade(true)
-                        .build(),
-                    placeholder = painterResource(R.drawable.productnon),
-                    error = painterResource(id = R.drawable.productnon),
-                    contentDescription = stringResource(R.string.app_name),
-                    contentScale = ContentScale.None,
-                    alignment = Alignment.Center,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(150.dp)
-
-
-                )
 
                 Row(modifier = Modifier.fillMaxWidth()) {
-                    Text(
-                        text = "${product.productName} - ${product.productQuantity}",
-                        fontWeight = FontWeight.Bold,
-                        color = Color.Black,
-                        fontSize = 16.sp,
-                        textAlign = TextAlign.Start,
+
+                    AsyncImage(
+                        model = ImageRequest.Builder(LocalContext.current)
+                            .data(product.imageUrl)
+                            .crossfade(true)
+                            .build(),
+                        placeholder = painterResource(R.drawable.productnon),
+                        error = painterResource(id = R.drawable.productnon),
+                        contentDescription = stringResource(R.string.app_name),
+                        contentScale = ContentScale.Crop,
+                        alignment = Alignment.Center,
                         modifier = Modifier
-                            .padding(top = 10.dp)
+                            .size(90.dp)
+                            .padding(10.dp)
+
+
                     )
+
+                    Column() {
+
+                        var productName = ""
+                        productName = product.productName.ifEmpty {
+                            "Unknown product"
+
+                        }
+
+                        Text(
+                            text = "$productName ${product.productQuantity}",
+                            fontWeight = FontWeight.Bold,
+                            color = Color.Black,
+                            fontSize = 16.sp,
+                            textAlign = TextAlign.Start,
+                            modifier = Modifier
+                                .padding(top = 10.dp)
+                        )
+
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(top = 2.dp)
+                        ) {
+
+                            NutriScore(product = product)
+
+                            NovaScore(product = product)
+
+                            EcoScore(product = product)
+
+                        }
+
+                    }
 
                 }
 
@@ -163,19 +190,6 @@ fun ProductItemHistory(
                 //0xFFFF5722 orange 3
                 //0xFFEC2718 red 4
 
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = 20.dp, bottom = 10.dp)
-                ) {
-
-                    NutriScore(product = product)
-
-                    NovaScore(product = product)
-
-                    EcoScore(product = product)
-
-                }
 
             }
         }
@@ -214,7 +228,9 @@ fun EcoScore(product: ProductTable) {
 
     Image(
         painter = painterResource(id = imageRoute ?: R.drawable.econull),
-        contentDescription = "ecoscore"
+        contentDescription = "ecoscore", modifier = Modifier
+            .size(42.dp)
+            .padding(top = 12.dp)
     )
 
 }
@@ -244,7 +260,7 @@ fun NutriScore(product: ProductTable) {
 
     Image(
         painter = painterResource(id = imageRoute ?: R.drawable.nutriscoreunknown),
-        contentDescription = "nutriscore"
+        contentDescription = "nutriscore", modifier = Modifier.size(60.dp)
     )
 
 }
@@ -289,8 +305,8 @@ fun NovaScore(product: ProductTable) {
                 modifier = Modifier
                     .padding(
                         start = 5.dp,
-                        end = 5.dp, top = 3.dp, bottom = 5.dp
-                    ), fontSize = 18.sp
+                        end = 5.dp, top = 5.dp, bottom = 5.dp
+                    ), fontSize = 15.sp
             )
         }
 
@@ -298,98 +314,3 @@ fun NovaScore(product: ProductTable) {
 
 }
 
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-fun DefaultPreviewHistory() {
-//    ProductListHistory(
-//        products = listOf(
-//            ProductTable(
-//                idProduct = "",
-//                productName = "Coca cola",
-//                imageUrl = "LALALA",
-//                nutriScoreGrade = "a",
-//                categories = "",
-//                countries = "",
-//                ingredients = "",
-//                novGroup = 2,
-//                productQuantity = "300ml",
-//                ecoScoreGrade = "a",
-//                isClick = false
-//            ),
-//
-//            ProductTable(
-//                idProduct = "",
-//                productName = "Coca",
-//                imageUrl = "LALALA",
-//                nutriScoreGrade = "b",
-//                categories = "",
-//                countries = "",
-//                ingredients = "",
-//                novGroup = 1,
-//                productQuantity = "300ml",
-//                ecoScoreGrade = "a",
-//                isClick = false
-//            ),
-//
-//            ProductTable(
-//                idProduct = "",
-//                productName = "Coca",
-//                imageUrl = "LALALA",
-//                nutriScoreGrade = "c",
-//                categories = "",
-//                countries = "",
-//                ingredients = "",
-//                novGroup = 2,
-//                productQuantity = "300ml",
-//                ecoScoreGrade = "a",
-//                isClick = false
-//
-//            ),
-//
-//            ProductTable(
-//                idProduct = "",
-//                productName = "Coca",
-//                imageUrl = "LALALA",
-//                nutriScoreGrade = "d",
-//                categories = "",
-//                countries = "",
-//                ingredients = "",
-//                novGroup = 3,
-//                productQuantity = "300ml",
-//                ecoScoreGrade = "a",
-//                isClick = false
-//            ),
-//
-//            ProductTable(
-//                idProduct = "",
-//                productName = "Coca",
-//                imageUrl = "LALALA",
-//                nutriScoreGrade = "e",
-//                categories = "",
-//                countries = "",
-//                ingredients = "",
-//                novGroup = 4,
-//                productQuantity = "300ml",
-//                ecoScoreGrade = "a",
-//                isClick = false
-//
-//            ),
-//
-//            ProductTable(
-//                idProduct = "",
-//                productName = "Coca",
-//                imageUrl = "LALALA",
-//                nutriScoreGrade = "unknown",
-//                categories = "",
-//                countries = "",
-//                ingredients = "",
-//                novGroup = 0,
-//                productQuantity = "300ml",
-//                ecoScoreGrade = "a",
-//                isClick = false
-//            )
-//
-//        )
-//
-//    )
-}
