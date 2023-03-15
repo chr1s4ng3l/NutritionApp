@@ -41,6 +41,9 @@ class ProductViewModel @Inject constructor(
         MutableLiveData(UIState.LOADING)
     val productInHistory: LiveData<UIState<List<ProductTable>>> get() = _productInHistory
 
+    val isLoading = MutableLiveData<Boolean>()
+
+
 
     init {
         getProductByCode()
@@ -48,10 +51,12 @@ class ProductViewModel @Inject constructor(
     }
 
     fun getProductByCode(code: String? = null) {
+        isLoading.value = true
         code?.let {
             viewModelScope.launch {
                 repo.getProductByCode(code).collect {
                     _product.value = it
+                    isLoading.value = false
                     Log.d(TAG, "getProduct: $it")
 
                 }
@@ -60,10 +65,12 @@ class ProductViewModel @Inject constructor(
     }
 
     fun getProductByTag(tag: String? = null) {
+        isLoading.value = true
         tag?.let {
             viewModelScope.launch {
                 repo.getProductByTag(tag).collect {
                     _productTag.value = it
+                    isLoading.value = false
                     Log.d(TAG, "getProduct: $it")
 
                 }

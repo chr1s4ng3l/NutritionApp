@@ -32,6 +32,7 @@ import coil.request.ImageRequest
 import com.example.nftapp.utils.UIState
 import com.example.nutritionapp.R
 import com.example.nutritionapp.data.database.ProductTable
+import com.example.nutritionapp.ui.theme.RedLight
 import com.example.nutritionapp.ui.theme.TikTok2
 import com.example.nutritionapp.viewmodel.ProductViewModel
 import me.saket.swipe.SwipeAction
@@ -104,7 +105,8 @@ fun ProductItemHistory(
 
     SwipeableActionsBox(
         endActions = listOf(delete),
-        swipeThreshold = 200.dp
+        swipeThreshold = 200.dp,
+        backgroundUntilSwipeThreshold = RedLight
     ) {
         // Swipeable content goes here.
 
