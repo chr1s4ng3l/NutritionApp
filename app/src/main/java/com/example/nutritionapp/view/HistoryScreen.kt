@@ -32,7 +32,6 @@ import coil.request.ImageRequest
 import com.example.nftapp.utils.UIState
 import com.example.nutritionapp.R
 import com.example.nutritionapp.data.database.ProductTable
-import com.example.nutritionapp.ui.theme.RedLight
 import com.example.nutritionapp.ui.theme.TikTok2
 import com.example.nutritionapp.viewmodel.ProductViewModel
 import me.saket.swipe.SwipeAction
@@ -57,7 +56,7 @@ fun ProductListHistory(
     productViewModel: ProductViewModel,
     products: List<ProductTable>,
     navController: NavController? = null,
-    selectedProduct: ((ProductTable) -> Unit)? = null
+    selectedProductHistory: ((ProductTable) -> Unit)?
 
 ) {
     Column(
@@ -71,7 +70,7 @@ fun ProductListHistory(
                 ProductItemHistory(
                     product = product,
                     navController,
-                    selectedProduct,
+                    selectedProductHistory,
                     productViewModel
                 )
             }
@@ -86,7 +85,7 @@ fun ProductListHistory(
 fun ProductItemHistory(
     product: ProductTable,
     navController: NavController? = null,
-    selectedProduct: ((ProductTable) -> Unit)? = null,
+    selectedProductHistory: ((ProductTable) -> Unit)? = null,
     productViewModel: ProductViewModel? = null
 
 ) {
@@ -118,8 +117,8 @@ fun ProductItemHistory(
             backgroundColor = Color.White,
             shape = RoundedCornerShape(corner = CornerSize(16.dp)),
             onClick = {
-                selectedProduct?.invoke(product)
-                navController?.navigate("details")
+                selectedProductHistory?.invoke(product)
+                navController?.navigate("detailsHistory")
             }
         ) {
 

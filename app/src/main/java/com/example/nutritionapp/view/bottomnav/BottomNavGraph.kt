@@ -83,6 +83,24 @@ fun BottomNavGraph(productViewModel: ProductViewModel, navHostController: NavHos
         }
 
 
+        composable("detailsHistory") {
+
+            Scaffold(
+                topBar = {
+                    productViewModel.selectedProductHistory?.productName?.let { it1 ->
+                        MyToolbar(
+                            it1,
+                            navController = navHostController
+                        )
+                    }
+                }, backgroundColor = Color.White,
+                content = {
+                    it.calculateTopPadding()
+                    it.calculateBottomPadding()
+
+                    ProductDetailScreenHistory(productViewModel = productViewModel, navHostController)
+                })
+        }
         composable("details") {
 
             Scaffold(

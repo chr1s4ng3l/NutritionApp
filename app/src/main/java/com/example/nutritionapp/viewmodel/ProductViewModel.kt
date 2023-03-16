@@ -82,9 +82,7 @@ class ProductViewModel @Inject constructor(
 
     fun insertProductHistory(product: ProductDomain? = null) {
         product?.let {
-            println("Holallallalaljscjh")
             viewModelScope.launch {
-                println("ajajjajajaj -> -> ->")
                 localRepository.insertProduct(product)
 
             }

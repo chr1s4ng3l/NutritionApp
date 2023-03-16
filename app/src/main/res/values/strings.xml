@@ -27,7 +27,7 @@
 
 
     <string name="moreInfo">Source -> https://nutriscore.blog/</string>
-    <string name="moreInfoEco">Source -> https://world.openfoodfacts.org/eco-score-the-environmental-impact-of-food-products/</string>
+    <string name="moreInfoEco">Source -> https://world.openfoodfacts.org/</string>
     <string name="moreInfoNova">Source -> https://us.openfoodfacts.org/nova</string>
     <string name="explication">Basically, the nutritional value for the Nutri-Score letter grade is determined by subtracting the total positive points from the total negative points. And the lower the score, the better the letter grade.</string>
     <string name="tableNutriScore">What Does a Nutri-Score Calculation Look Like?</string>

@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -113,10 +114,11 @@ fun EcoScoreDetails() {
             text = stringResource(R.string.moreInfoEco),
             fontSize = 12.sp,
             fontWeight = FontWeight.Normal,
+            color = Color.Blue,
+            textDecoration = TextDecoration.Underline,
             modifier = Modifier.padding(
                 start = 10.dp, end = 10.dp, top = 5.dp, bottom = 50.dp
-            ),
-            color = Color.Black
+            )
         )
 
     }
@@ -186,10 +188,11 @@ fun NovaScoreDetails() {
             text = stringResource(R.string.moreInfoNova),
             fontSize = 12.sp,
             fontWeight = FontWeight.Normal,
+            color = Color.Blue,
+            textDecoration = TextDecoration.Underline,
             modifier = Modifier.padding(
                 start = 10.dp, end = 10.dp, top = 5.dp, bottom = 50.dp
-            ),
-            color = Color.Black
+            )
         )
 
 
@@ -252,10 +255,11 @@ fun NutriScoreDetails() {
             text = stringResource(R.string.moreInfo),
             fontSize = 12.sp,
             fontWeight = FontWeight.Normal,
+            color = Color.Blue,
+            textDecoration = TextDecoration.Underline,
             modifier = Modifier.padding(
                 start = 10.dp, end = 10.dp, top = 5.dp, bottom = 50.dp
-            ),
-            color = Color.Black
+            )
         )
 
 
