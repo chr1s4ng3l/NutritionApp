@@ -3,9 +3,8 @@ package com.example.nutritionapp.view
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.itemsIndexed
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
@@ -65,7 +64,7 @@ fun ProductListHistory(
             .fillMaxSize()
             .padding(bottom = 40.dp)
     ) {
-        LazyVerticalGrid(columns = GridCells.Fixed(1), content = {
+        LazyColumn( reverseLayout = true, content = {
             itemsIndexed(items = products) { index, product ->
                 ProductItemHistory(
                     product = product,
