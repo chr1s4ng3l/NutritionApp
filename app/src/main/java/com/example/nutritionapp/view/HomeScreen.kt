@@ -8,7 +8,6 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
-import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -30,7 +29,6 @@ import coil.request.ImageRequest
 import com.example.nftapp.utils.UIState
 import com.example.nutritionapp.R
 import com.example.nutritionapp.data.model.domain.ProductDomain
-import com.example.nutritionapp.ui.theme.Teal200
 import com.example.nutritionapp.viewmodel.ProductViewModel
 
 

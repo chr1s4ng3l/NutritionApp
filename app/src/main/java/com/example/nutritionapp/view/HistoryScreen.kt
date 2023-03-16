@@ -105,8 +105,8 @@ fun ProductItemHistory(
 
     SwipeableActionsBox(
         endActions = listOf(delete),
-        swipeThreshold = 200.dp,
-        backgroundUntilSwipeThreshold = RedLight
+        swipeThreshold = 250.dp,
+        backgroundUntilSwipeThreshold = TikTok2
     ) {
         // Swipeable content goes here.
 
