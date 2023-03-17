@@ -1,14 +1,15 @@
 package com.example.nutritionapp.view.bottomnav
 
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -47,7 +48,9 @@ fun BottomNavGraph(productViewModel: ProductViewModel, navHostController: NavHos
                 })
         }
 
+
         composable("products") {
+
             if (productViewModel.tag.isNotEmpty()) {
                 productViewModel.getProductByTag(productViewModel.tag)
                 Scaffold(
@@ -58,12 +61,24 @@ fun BottomNavGraph(productViewModel: ProductViewModel, navHostController: NavHos
                         it.calculateTopPadding()
                         it.calculateBottomPadding()
 
-                        ProductTagScreen(
-                            productViewModel = productViewModel,
-                            navController = navHostController
-                        )
-                    })
+                        Column(
+                            modifier = Modifier.fillMaxSize(),
+                            verticalArrangement = Arrangement.Center,
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
 
+//                            if (productViewModel.isLoading.value == true) {
+//                                CircularProgressIndicator()
+//                            } else {
+                                ProductTagScreen(
+                                    productViewModel = productViewModel,
+                                    navController = navHostController
+                                )
+
+                            //}
+
+                        }
+                    })
 
             } else if (productViewModel.barcode.isNotEmpty()) {
                 productViewModel.getProductByCode(productViewModel.barcode)
@@ -76,7 +91,21 @@ fun BottomNavGraph(productViewModel: ProductViewModel, navHostController: NavHos
                         it.calculateTopPadding()
                         it.calculateBottomPadding()
 
-                        ProductScreen(productViewModel = productViewModel, navHostController)
+                        Column(
+                            modifier = Modifier.fillMaxSize(),
+                            verticalArrangement = Arrangement.Center,
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
+                            if (productViewModel.isLoading.value == true) {
+                                CircularProgressIndicator()
+                            } else {
+                                ProductScreen(
+                                    productViewModel = productViewModel,
+                                    navHostController
+                                )
+
+                            }
+                        }
                     })
             }
 
@@ -98,7 +127,10 @@ fun BottomNavGraph(productViewModel: ProductViewModel, navHostController: NavHos
                     it.calculateTopPadding()
                     it.calculateBottomPadding()
 
-                    ProductDetailScreenHistory(productViewModel = productViewModel, navHostController)
+                    ProductDetailScreenHistory(
+                        productViewModel = productViewModel,
+                        navHostController
+                    )
                 })
         }
         composable("details") {

@@ -34,8 +34,8 @@ class ProductRepositoryImpl @Inject constructor(
             val response = api.getProductsByTag(tag)
             if (response.isSuccessful) {
                 response.body()?.let {
-                    Log.d(TAG, "Response -> $response")
-                    Log.d(TAG, "Response Body -> ${it}")
+//                    Log.d(TAG, "Response -> $response")
+//                    Log.d(TAG, "Response Body -> ${it}")
                     emit(UIState.SUCCESS(it.products.toDomain()))
                 } ?: throw NullAssetsResponse()
             } else throw FailureResponse(response.errorBody().toString())
@@ -54,8 +54,8 @@ class ProductRepositoryImpl @Inject constructor(
             val response = api.getProductByCode(code)
             if (response.isSuccessful) {
                 response.body()?.let {
-                    Log.d(TAG, "Response -> $response")
-                    Log.d(TAG, "Response Body -> ${it}")
+//                    Log.d(TAG, "Response -> $response")
+//                    Log.d(TAG, "Response Body -> ${it}")
                     emit(UIState.SUCCESS(it.products.toDomain()))
                 } ?: throw NullAssetsResponse()
             } else throw FailureResponse(response.errorBody().toString())

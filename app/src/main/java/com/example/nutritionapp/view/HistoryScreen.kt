@@ -64,7 +64,7 @@ fun ProductListHistory(
             .fillMaxSize()
             .padding(bottom = 40.dp)
     ) {
-        LazyColumn( reverseLayout = true, content = {
+        LazyColumn(reverseLayout = true, content = {
             itemsIndexed(items = products) { index, product ->
                 ProductItemHistory(
                     product = product,
@@ -150,8 +150,8 @@ fun ProductItemHistory(
 
                     Column() {
 
-                        var productName = ""
-                        productName = product.productName.ifEmpty {
+
+                        val productName = product.productName.ifEmpty {
                             "Unknown product"
 
                         }

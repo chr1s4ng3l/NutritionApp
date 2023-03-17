@@ -20,7 +20,6 @@ class LocalRepositoryImpl @Inject constructor(private val productDao: ProductDao
     override suspend fun insertProduct(productDomain: ProductDomain) {
         try {
 
-            println("<-<-<_<_<____<__<-,_")
             val productTable = productDomain.toDomainTable()
             productDao.insertProducts(productTable)
 

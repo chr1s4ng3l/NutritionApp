@@ -1,5 +1,6 @@
 package com.example.nutritionapp.view
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -8,6 +9,7 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -41,7 +43,10 @@ fun ProductTagScreen(productViewModel: ProductViewModel, navController: NavContr
                 productViewModel.selectedProduct = it
             }
         }
-        is UIState.ERROR -> {}
+        is UIState.ERROR -> {
+            productViewModel.isLoading.value = false
+            Toast.makeText(LocalContext.current, "Product not found", Toast.LENGTH_LONG).show()
+        }
     }
 }
 
@@ -54,7 +59,9 @@ fun ProductScreen(productViewModel: ProductViewModel, navController: NavControll
                 productViewModel.selectedProduct = it
             }
         }
-        is UIState.ERROR -> {}
+        is UIState.ERROR -> {
+            Toast.makeText(LocalContext.current, "Product not found", Toast.LENGTH_LONG).show()
+        }
     }
 }
 
@@ -73,6 +80,7 @@ fun ProductList(
             .fillMaxSize()
             .padding(bottom = 40.dp)
     ) {
+
         LazyColumn(
             state = rememberForeverLazyListState(
                 key = productViewModel.selectedProduct?.id ?: ""
@@ -292,8 +300,6 @@ fun NovaScore(product: ProductDomain) {
     }
 
 }
-
-
 
 
 @Preview(showBackground = true, showSystemUi = true)
