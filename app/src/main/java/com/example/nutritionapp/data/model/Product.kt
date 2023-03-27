@@ -27,4 +27,5 @@ data class Product(
     @SerializedName("quantity")
     val quantity: String? = "",
 
-)
+    )
+

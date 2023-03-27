@@ -30,8 +30,6 @@ class ProductRepositoryImplTest {
     private val testDispatcher = UnconfinedTestDispatcher()
     private val testScope = TestScope(testDispatcher)
 
-    private val mockProductItem = mockk<Product>(relaxed = true)
-
     @Before
     fun setUp() {
 

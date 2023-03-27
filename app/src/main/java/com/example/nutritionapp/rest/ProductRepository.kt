@@ -30,7 +30,6 @@ class ProductRepositoryImpl @Inject constructor(
         emit(UIState.LOADING)
 
         try {
-
             val response = api.getProductsByTag(tag)
             if (response.isSuccessful) {
                 response.body()?.let {

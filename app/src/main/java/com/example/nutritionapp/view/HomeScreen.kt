@@ -74,6 +74,7 @@ fun ProductList(
 
 ) {
 
+
     Column(
         Modifier
             .background(color = Color.White)
@@ -104,6 +105,8 @@ fun ProductItem(
     selectedProduct: ((ProductDomain) -> Unit)? = null
 
 ) {
+
+
 
 
     Card(
